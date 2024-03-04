@@ -14,7 +14,8 @@ def get_predicted_price_class(battery_power, blue, clock_speed, dual_sim, fc, fo
         # print(test_array)
         predicted_price_class = model.predict(test_array)[0]
         print("predicted_price_class :",predicted_price_class)
-        
+        predicted_price_class = {0: '10-16k', 1: '18-24k', 2: '25-30k', 3: '30-35k'}
+        print(predicted_price_class)
         
         
         return predicted_price_class

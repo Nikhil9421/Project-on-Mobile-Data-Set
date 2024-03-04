@@ -41,13 +41,20 @@ def predicted_price_class():
         wifi = eval(data['wifi'])
 
         result = get_predicted_price_class(battery_power, blue, clock_speed, dual_sim, fc,four_g, int_memory, m_dep,mobile_wt,n_cores,pc,px_height,px_width,ram,sc_h,sc_w,talk_time,three_g,touch_screen,wifi)
-        price = {0: '10-16k', 1: '18-24k', 2: '25-30k', 3: '30-35k'}
-        print(result)
-    return render_template('index.html', prediction=f"{price[result]}")
+        if predicted_price_class == 3:
+            price = "30-35k"
+        elif predicted_price_class == 2:
+            price = "25-30k"
+        elif predicted_price_class == 1:
+            price = "18-24k"
+        else:
+            price = "10-16k"
+        print("Mobile price: ", price)
+    return render_template('index.html', prediction=price)
     #return render_template('index.html')    
     #prediction=f"{price[result]}"
 
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0",debug=False,port=5000)
